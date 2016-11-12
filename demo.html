@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Demo</title>
+    <style type="text/css">
+    body{
+    	font-size: 62.5%;
+    }
+	h1, .logo {
+	    font-family: "ff-mark-web","HelveticaNeue","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+	    color: #505050;
+	    font-weight: 300;
+	    margin: 0;
+	    font-size: 38px;
+      	line-height: 57.76px;
+      	font-size: 2.8rem;
+      	line-height: 5.776rem;
+      	word-spacing: 2px;
+	}
+	.heading{
+		margin-top: 80px;
+		width:95%;
+	}
+	.logo {
+	    zoom: 1;
+	    font-weight: 700;
+	    display: inline-block;
+	    position: relative;
+	    z-index: 1000;
+	    color: #72d69a;
+	}
+	.scrolldiv{
+        width:850px;
+        height: 500px;
+        margin: 10px auto;
+        overflow-y: scroll;
+        padding: 10px;
+    }
+    .set_btn{
+	    z-index: 1000;
+	    position: absolute;
+	    top: 25px;
+	}
+	.set_btn img{
+	 	border-radius: 22px;
+	    border: 2px solid #adb0b1;
+	}
+	#head_fixed{
+		position: absolute;
+	    top: 100px;
+	    width:80%;
+	}
+    </style>
+</head>
+<body>
+	<div id="testdiv" class="scrolldiv">
+		<div class = "set_btn">
+                <img src="img/userPhotoSmall.jpg" alt="smallUserPhoto" width="40px" height="40px">
+            </div>
+		<div id="head_fixed">
+			<div class="logo">行走的程序猿</div>
+			
+		</div>
+		<h1 class="heading">
+				<div class="logo" style="opacity:0;">行走的程序猿</div> 
+			<span class="content-heading" role="heading" style="opacity: 1;">
+				程序员(英文Programmer)是从事程序开发、维护的专业人员。一般将程序员分为程序设计人员和程序编码人员，但两者的界限并不非常清楚，特别是在中国。软件从业人员分为初级程序员、中级程序员、高级程序员、系统分析员，系统架构师，测试工程师六大类
+			</span>
+			
+		</h1>
+		<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+		<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	</div>
+	<script type="text/javascript">
+
+	    var divscroll = document.getElementById('testdiv');
+	    var _logo = document.getElementsByClassName("logo");
+	    var _head = document.getElementsByClassName("content-heading");
+	    var _heading = document.getElementsByClassName("heading");
+	    //var _set_btn = document.getElementsByClassName("set_btn");
+
+	    function divScroll(){
+	        var wholeHeight = divscroll.scrollHeight;
+	        var scrollTop = divscroll.scrollTop;
+	        var divHeight = divscroll.clientHeight;
+	        /*if(scrollTop+divHeight>=wholeHeight){
+	            alert("滚动到底部了！");
+	        }
+	        if(scrollTop==0){
+	            alert("滚动到顶部了！");
+	        }*/
+	        if(scrollTop>0){
+	        	_logo[0].style.position="fixed";
+	        	//_set_btn[0].style.position="fixed";
+	        	_head[0].style.opacity = (wholeHeight-scrollTop)/5000;
+	        	//_head[0].style.paddingLeft = parseInt(_logo[0].clientWidth)+14+'px';
+	        	console.log(scrollTop)
+	        	console.log(_logo[0].clientWidth)
+	        	console.log((wholeHeight-scrollTop)/5000)
+	        	
+	        }
+	        else{
+	        	_logo[0].style.position="relative";
+	        	//_set_btn[0].style.position="relative";
+	        	_head[0].style.opacity = 1;
+	        	_head[0].style.paddingLeft = 0+'px';
+	        }
+	    }
+	    divscroll.onscroll=divScroll;
+	    </script>
+    
+</body>
+</html>
